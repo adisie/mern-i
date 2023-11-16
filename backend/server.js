@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 // routes
 const blogsRoute = require('./routes/blogsRoute')
@@ -15,6 +16,7 @@ const app = express()
 // settings and middlewares
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors())
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{

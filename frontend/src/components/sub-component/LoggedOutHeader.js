@@ -2,22 +2,16 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'
 
-const LoggedOutHeader = ({setIsLoggedIn}) => {
-
-  const styleActiveLink = ({isActive}) => {
-    return {
-      fontWeight: isActive ? 'bold' : 'normal'
-    }
-  }
+const LoggedOutHeader = () => {
   
   return (
     <nav className="navigation">
         <ul>
             <li className='btns'>
-                <NavLink className='link' to='login' onClick={()=>setIsLoggedIn(true)} style={styleActiveLink}>Login</NavLink>
+                <NavLink className='link' to='login'>Login</NavLink>
             </li>
             <li className='btns'>
-                <NavLink className='link' to='signup' style={styleActiveLink}>Signup</NavLink>
+                <NavLink className='link' to='signup'>Signup</NavLink>
             </li>
         </ul>
     </nav>

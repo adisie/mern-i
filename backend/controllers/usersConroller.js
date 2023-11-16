@@ -23,8 +23,9 @@ const loginUser = async (req,res) => {
                 res.cookie('auth',token,{
                     maxAge: MAX_AGE * 1000
                 })
+                const USER = {username: user.username,email: user.email}
                 return res.status(200).json({
-                    user
+                    USER
                 })
             }
             throw Error('Wrong password')
@@ -32,7 +33,7 @@ const loginUser = async (req,res) => {
         throw Error('Username not exist')
     }catch(err){
         const errors = errorHandler(err)
-        res.status(490).json({errors})
+        res.status(401).json({errors})
     }
 }
 
