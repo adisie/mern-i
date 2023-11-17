@@ -21,7 +21,10 @@ const loginUser = async (req,res) => {
             if(isPassMatch){
                 const token = generateToken(user._id)
                 res.cookie('auth',token,{
-                    maxAge: MAX_AGE * 1000
+                    maxAge: MAX_AGE * 1000,
+                    httpOnly: true,
+                    sameSite: 'lax',
+                    secure: process.env.NODE_ENV === 'production'
                 })
                 const USER = {username: user.username,email: user.email}
                 return res.status(200).json({
@@ -45,7 +48,10 @@ const signupUser = async (req,res) => {
         const user = await User.create({username,email,password})
         const token = generateToken(user._id)
         res.cookie('auth',token,{
-            maxAge: MAX_AGE * 1000
+            maxAge: MAX_AGE * 1000,
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === 'production'
         })
         res.status(200).json({user})
     }catch(err){
@@ -54,8 +60,24 @@ const signupUser = async (req,res) => {
     }
 }
 
+// logout user
+const logoutUser = (req,res) => {
+    try{
+        res.clearCookie('auth')
+        res.status(200).json({
+        message: "LOGGED_OUT"
+    })
+    }catch(err){
+        console.log(err)
+        res.status(400).json({
+            ERROR: "SOMETHING_WRONG"
+        })
+    }
+}
+
 
 module.exports = {
     loginUser,
     signupUser,
+    logoutUser,
 }

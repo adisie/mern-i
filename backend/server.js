@@ -8,15 +8,16 @@ const cors = require('cors')
 const blogsRoute = require('./routes/blogsRoute')
 const usersRoute = require('./routes/usersRoute')
 
-// middlewares
-const {authRequired} = require('./middlewares/authRequired')
 
 const app = express()
 
 // settings and middlewares
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin: true,
+    credentials: true,
+}))
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{
@@ -29,5 +30,5 @@ mongoose.connect(process.env.MONGODB_URI)
     console.log(err)
 })
 
-app.use('/blogs',authRequired,blogsRoute)
+app.use('/blogs',blogsRoute)
 app.use('/users',usersRoute)

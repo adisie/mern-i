@@ -14,31 +14,19 @@ const Login = () => {
 
   // functions
   // login submit handler
-  const loginSubmitHandler = async e => {
+  const loginSubmitHandler = e => {
     e.preventDefault()
+    axios.post('/users/login',loginFormField,{withCredentials: true})
+      .then(response=>{
+        console.log(response)
+      })
+      .catch(err=>{
+        const usernameError = document.querySelector('.input-controll .error.username')
+        const passwordError = document.querySelector('.input-controll .error.password')
+        usernameError.textContent = err.response.data.errors.username 
+        passwordError.textContent = err.response.data.errors.password
+      })
     
-    const response = await fetch('http://localhost:3080/users/login',{
-      credentials: "same-origin",
-      method: 'POST',
-      body: JSON.stringify(loginFormField),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      withCredentials: true
-    })
-
-    const data = await response.json()
-
-    if(data.USER){
-      localStorage.setItem('user',JSON.stringify(data.USER))
-      window.location.assign('/')
-    }
-    if(data.errors){
-      document.querySelector('.input-controll .error.username').textContent = data.errors.username 
-      document.querySelector('.input-controll .error.password').textContent = data.errors.password
-    }
-    console.log(data.errors)
-  
   }
 
   // username input validator

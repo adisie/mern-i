@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 // constants
-const MAX_AGE = 60 * 30
+const MAX_AGE = 60 * 2
 
 // functions
 

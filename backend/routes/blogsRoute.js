@@ -3,23 +3,26 @@ const {Router} = require('express')
 // controllers
 const blogController = require('../controllers/blogsController')
 
+// middlewares
+const {authRequired} = require('../middlewares/authRequired')
+
 
 const router = Router()
 
 // get all blogs
-router.get('/',blogController.getAllBlogs)
+router.get('/',authRequired,blogController.getAllBlogs)
 
 // add new blog
-router.post('/',blogController.addNewBlog)
+router.post('/',authRequired,blogController.addNewBlog)
 
 // get a single blog
-router.get('/:_id',blogController.getSingleBlog)
+router.get('/:_id',authRequired,blogController.getSingleBlog)
 
 // update a single blog
-router.put('/:_id',blogController.updateSingleBlog)
+router.put('/:_id',authRequired,blogController.updateSingleBlog)
 
 // delete a single blog
-router.delete('/:_id',blogController.deleteSingleBlog)
+router.delete('/:_id',authRequired,blogController.deleteSingleBlog)
 
 
 module.exports = router
