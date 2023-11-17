@@ -1,5 +1,6 @@
 import React,{useContext} from 'react'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 import profileImage from '../../assets/images/male-profile-3.jpg'
 
@@ -8,12 +9,28 @@ import { AuthContext } from '../../contexts/AuthContext'
 
 const LoggedInHeader = () => {
     // contexts
-    const {user} = useContext(AuthContext)
+    const {user,setUser} = useContext(AuthContext)
 
     const styleActiveLink = ({isActive}) => {
         return {
             fontWeight: isActive ? 'bold' : 'normal'
         }
+    }
+
+    // functions
+    // logout user
+    const logoutUser = () => {
+        axios.get('/users/logout',{withCredentials: true})
+          .then(response=>{
+            if(response.data.message === 'LOGGED_OUT'){
+                setUser(null)
+                localStorage.removeItem('user')
+            }
+          })
+          .catch(err=>{
+            setUser(null)
+            localStorage.removeItem('user')
+          })
     }
   return (
     <nav className="navigation">
@@ -28,8 +45,7 @@ const LoggedInHeader = () => {
         <span>{user.username}</span>
         <img src={profileImage} alt="profile-image" className="profile-img" />
         <button onClick={()=>{
-            localStorage.removeItem('user')
-            window.location.assign('/login')
+            logoutUser()
         }}>Logout</button>
     </nav>
   )

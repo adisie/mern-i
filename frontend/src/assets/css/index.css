@@ -139,6 +139,7 @@ header .navigation button {
   color: white;
   background: rgb(41, 128, 68);
   padding: 5px 32px;
+  margin-top: 12px;
   border-radius: 5px;
   cursor: pointer;
   border: none;

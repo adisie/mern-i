@@ -3,8 +3,12 @@ import React, {useState,useContext} from 'react'
 import { Navigate } from 'react-router-dom'
 
 import axios from 'axios'
+import { AuthContext } from '../contexts/AuthContext'
 
 const Login = () => {
+
+  // contexts 
+  const {user,setUser} = useContext(AuthContext)
 
   // states
   const [loginFormField,setLoginFormField] = useState({
@@ -18,7 +22,8 @@ const Login = () => {
     e.preventDefault()
     axios.post('/users/login',loginFormField,{withCredentials: true})
       .then(response=>{
-        console.log(response)
+        localStorage.setItem('user',JSON.stringify(response.data.USER))
+        setUser(response.data.USER)
       })
       .catch(err=>{
         const usernameError = document.querySelector('.input-controll .error.username')
@@ -85,7 +90,13 @@ const Login = () => {
   }
 
   return (
-    <div className='login-signup-form-container'>
+    <>
+    {
+      user 
+      ?
+      <Navigate to='/' />
+      :
+      <div className='login-signup-form-container'>
       <form onSubmit={loginSubmitHandler}>
         <h3>Login</h3>
         <div className="input-controll">
@@ -105,6 +116,8 @@ const Login = () => {
         <button>Login</button>
       </form>
     </div>
+    }
+    </>
   )
 }
 
