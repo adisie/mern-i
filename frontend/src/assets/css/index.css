@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+}
+
+header {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 1px 3px rgb(111, 1, 1);
+  padding: 0.7em 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+header .logo-container a {
+  text-decoration: none;
+}
+header .logo-container a .site-logo {
+  width: 48px;
+  cursor: pointer;
+}
+header .navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .navigation ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .navigation ul li {
+  display: inline-block;
+  margin: 0 0.5em;
+  position: relative;
+}
+header .navigation ul li::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  border-radius: 5px;
+  background: rgb(111, 1, 1);
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transition: 1s;
+}
+header .navigation ul li:hover::after {
+  width: 100%;
+}
+header .navigation ul li a {
+  text-decoration: none;
+  color: rgb(111, 1, 1);
+}
+header .navigation ul li .user-profile {
+  width: 42px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+header .navigation ul .conrolls-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .navigation ul .conrolls-list::after {
+  display: none;
+}
+header .navigation ul .conrolls-list button {
+  border: none;
+  padding: 3px 24px;
+  color: white;
+  background: rgb(111, 1, 1);
+  font-family: "Times New Roman", Times, serif;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+header .navigation ul .conrolls-list span {
+  font-weight: bold;
+  font-size: small;
+  font-style: italic;
+  margin: 0.1em 0.3em;
+  color: rgb(111, 1, 1);
+}
+header .navigation ul .login-signup-link-container .user-login-signup-link {
+  color: white;
+  padding: 0.3em 1.7em;
+  border-radius: 3px;
+  background: rgb(111, 1, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header .navigation ul .login-signup-link-container::after {
+  display: none;
+}
