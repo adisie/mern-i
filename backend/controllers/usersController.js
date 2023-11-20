@@ -65,9 +65,18 @@ const signupUser = async (req,res) => {
 
 // logout user
 const logoutUser = (req,res) => {
-    res.status(200).json({
-        message: "LOGOUT"
-    })
+    try{
+        res.cookie('auth','',{
+            maxAge: 1
+        })
+        res.status(200).json({
+            message: "LOGGED_OUT"
+        })
+    }catch(err){
+        res.status(490).json({
+            ERROR: "SOMETHING_WRONG"
+        })
+    }
 }
 
 

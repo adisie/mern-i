@@ -1,6 +1,6 @@
 
 
-import React from 'react'
+import React,{useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 
 // impages
@@ -11,8 +11,11 @@ import siteLogo from '../assets/images/dark_red_eagle_1.png'
 import LoggedInHeader from './sub-components/LoggedInHeader'
 import LoggedOutHeader from './sub-components/LoggedOutHeader'
 
-const Header = () => {
+// import contexts
+import { AuthContext } from '../contexts/AuthContext'
 
+const Header = () => {
+    const {user} = useContext(AuthContext)
   return (
     <header>
         <div className="logo-container">
@@ -22,7 +25,7 @@ const Header = () => {
         </div>
         <nav className="navigation">
             {
-                false 
+                user 
                 ?
                 <LoggedInHeader />
                 :
