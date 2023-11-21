@@ -7,7 +7,7 @@ const {errorHandler} = require('../utils/blogsUtil')
 // get all blogs
 const getAllBlogs = async (req,res) => {
     try {
-        const blogs = await Blog.find()
+        const blogs = await Blog.find().sort({createdAt: -1})
         res.status(200).json({user: req.user,blogs})
     }catch(err){
         res.status(400).json(err)

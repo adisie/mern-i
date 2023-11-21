@@ -34,10 +34,10 @@ const Login = () => {
       setUser(response.data.user)
       localStorage.setItem('user',JSON.stringify(response.data.user))
       window.location.assign('/')
-      setLoginFormField({
-        username: '',
-        password: ''
-      })
+      // setLoginFormField({
+      //   username: '',
+      //   password: ''
+      // })
       usernameError.textContent = ''
       passwordError.textContent = ''
     }catch(err){

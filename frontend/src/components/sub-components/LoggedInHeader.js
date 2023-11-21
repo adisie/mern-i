@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 // images
-import userProfile from '../../assets/images/tewodiros1.jpg'
+import userProfile from '../../assets/images/male-profile-2.jpg'
 
 // contexts
 import { AuthContext } from '../../contexts/AuthContext'
@@ -17,11 +17,13 @@ const LoggedInHeader = () => {
   const logoutUser = async () => {
     try {
       const response = await axios.get('/users/logout',{withCredentials: true})
+
       if(response.data.message === 'LOGGED_OUT'){
         localStorage.removeItem('user')
         window.location.assign('/login')
       }
     }catch(err){
+      
       console.log(err)
     }
   }

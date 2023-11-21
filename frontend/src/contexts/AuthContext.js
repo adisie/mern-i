@@ -7,9 +7,15 @@ export const AuthContext = createContext()
 
 const AuthContextProvider = (props) => {
     // get local data
-    const localData = JSON.parse(localStorage.getItem('user'))
+    const localData = localStorage.getItem('user')
+    
     // states
-    const [user,setUser] = useState(localData)
+    const [user,setUser] = useState(()=>{
+        if(localData){
+            return JSON.parse(localData)
+        }
+        return null
+    })
 
     //effects
     useEffect(()=>{
@@ -21,10 +27,6 @@ const AuthContextProvider = (props) => {
     const checkAuth = async () => {
         try{
             const response = await axios.get('/blogs',{withCredentials: true})
-            console.log(response.data.user)
-            //set user
-            // setUser(response.data.user)
-
             //set localStorage
             localStorage.setItem('user',JSON.stringify(response.data.user))
 

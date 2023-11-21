@@ -54,12 +54,17 @@ const signupUser = async (req,res) => {
             sameSite: 'lax',
             secure: process.env.NODE_ENV === 'production'
         })
-        res.status(200).json(user)
+        res.status(200).json({
+            user: {
+                username: user.username,
+                email: user.email,
+            }
+        })
     }catch(err){
         const errors = errorHandler(err)
-        res.status(200).json(
+        res.status(200).json({
             errors
-        )
+        })
     }
 }
 
