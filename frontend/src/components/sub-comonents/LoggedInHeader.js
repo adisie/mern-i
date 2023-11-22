@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
 import { NavLink } from "react-router-dom"
 import { FaArrowAltCircleLeft } from "react-icons/fa"
@@ -11,6 +11,8 @@ import { AuthContext } from "../../contexts/AuthContext"
 
 const LoggedInHeader = () => {
     const {user,setAuhorizedUser} = useContext(AuthContext)
+
+    const [isHide,setIsHide] = useState(true)
 
     // logout user
     const logoutUser = async () => {
@@ -26,23 +28,59 @@ const LoggedInHeader = () => {
             console.log(err)
         }
     }
+
+    const showHideNavBar = () => {
+        const navBar = document.querySelector('.login-nav')
+
+        if(navBar.style.right === '-1000px'){
+            navBar.style.right = "0"
+            setIsHide(false)
+        }else {
+            navBar.style.right = "-1000px"
+            setIsHide(true)
+        }
+
+    }
+
+    const userProfileViwer = () => {
+        const profileViewer = document.querySelector('.user-profile-conroller')
+        profileViewer.style.display = "flex"
+    }
+
+    const closeUserProfileViewr = () => {
+        const profileViewer = document.querySelector('.user-profile-conroller')
+        profileViewer.style.display = "none"
+    }
+
     return ( 
         <nav className="login-nav">
-            <button className="hide-nav-btn"><FaArrowAltCircleRight /></button>
             <ul>
                 <li>
-                    <NavLink to='/'>Home</NavLink>
+                    <NavLink to='/' onClick={showHideNavBar}>Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to='blogs'>Blogs</NavLink>
+                    <NavLink to='blogs' onClick={showHideNavBar}>Blogs</NavLink>
                 </li>
             </ul>
             <div className="user-controller">
                 <button onClick={logoutUser}>Logout</button>
                 <span>{user.username}</span>
-                <img src={defaultUserProfileImage} alt="user profile image" />
+                <img src={defaultUserProfileImage} alt="user profile image" onClick={userProfileViwer}/>
             </div>
-            <button className="show-nav-btn"><FaArrowAltCircleLeft /></button>
+            <button className="show-nav-btn" onClick={showHideNavBar}>
+            {
+                isHide 
+                ?
+                <FaArrowAltCircleLeft />
+                : 
+                <FaArrowAltCircleRight />
+            }
+            </button>
+            <div className="user-profile-conroller">
+                <div className="action-container">
+                    <button onClick={closeUserProfileViewr}>close me</button>
+                </div>
+            </div>
         </nav>
      );
 }
