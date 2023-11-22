@@ -1,0 +1,153 @@
+
+
+.header-main-container {
+    width: 100%;
+    height: 100%;
+    background: $primary-color;
+    box-shadow: 0 2px 3px black;
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 .75em;
+
+        .site-logo {
+            font-size: 1.5em;
+            font-weight: bolder;
+            font-family: cursive;
+            color: $secondary-color;
+            font-style: italic;
+        }
+
+        .logout-nav {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+
+                li {
+                    margin: 0 .3em;
+
+                    .btn-link {
+                        padding: .25em .95em;
+                        color: $primary-color;
+                        background: $secondary-color;
+                        border-radius: 3px;
+                        transition: 1s;
+
+                        &:hover {
+                            opacity: .75;
+                        }
+                    }
+                }
+            }
+        }
+
+        .login-nav {
+            // width: 100%;
+            // height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+
+                li {
+                    margin: 0 .25em;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        width: 0;
+                        height: 3px;
+                        border-radius: 3px;
+                        background: $secondary-color;
+                        position: absolute;
+                        left: 0;
+                        bottom: -3px;
+                        transition: 1s;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+                    }
+
+                    a {
+                        color: $secondary-color;
+                    }
+                }
+            }
+
+            .user-controller {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+
+                button {
+                    background: transparent;
+                    border: 2px solid $secondary-color;
+                    padding: .25em .75em;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: .95em;
+                    margin: 0 .3em;
+                    font-family: 'Times New Roman', Times, serif;
+                    color: $secondary-color;
+                }
+
+                span {
+                    font-family: 'Times New Roman', Times, serif;
+                    font-style: italic;
+                    color: $secondary-color;
+                    font-size: small;
+                }
+
+                img {
+                    width: 38px;
+                    height: 32px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    margin: 0 .3em;
+                }
+            }
+
+            .show-nav-btn,.hide-nav-btn {
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                color: $secondary-color;
+                font-size: 1.5em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                display: none;
+            }
+        }
+    }
+}
+
+// media query
+
+
+@media screen and (max-width: 600px) {
+    .login-nav {
+        background: $primary-color;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 75%;
+    }
+}

@@ -1,12 +1,28 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 // routes
 const usersRoute = require('./routes/usersRoute')
 const blogsRoute = require('./routes/blogsRoute')
 
+// midlewares
+const {
+    authRequired,
+} = require('./middlewares/authRequired')
+
 const app = express()
+
+
+// settings and middlewares
+app.use(express.json())
+app.use(cookieParser())
+app.use(cors({
+    origin: true,
+    credentials: true
+}))
 
 // connect to the data base
 mongoose.connect(process.env.MONGODB_URI)
@@ -22,5 +38,5 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // setting routes
 app.use('/users',usersRoute)
-app.use('/blogs',blogsRoute)
+app.use('/blogs',authRequired,blogsRoute)
 

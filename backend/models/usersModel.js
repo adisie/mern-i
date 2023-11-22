@@ -7,14 +7,6 @@ const userSchema = new Schema({
         type: String,
         required: [true,'Username required'],
         unique: true,
-        validate: [()=>{
-            const usernameChecker = /^[a-zA-Z]{3}/
-            if(usernameChecker.test(username)){
-                return true
-            }else{
-                return false
-            }
-        },'Invalid username(3+)'],
     },
     phone: {
         type: String,
