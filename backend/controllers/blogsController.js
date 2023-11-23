@@ -1,21 +1,33 @@
 
 
-
+// models
+const Blog = require('../models/blogsModel')
 
 // get all blogs
-const getAllBlogs = (req,res) => {
-    res.status(200).json({
-        message: 'GET all blogs',
-        user: req.user
-    })
+const getAllBlogs = async (req,res) => {
+    try {
+        const blogs = await Blog.find().sort({createdAt: -1})
+        res.status(200).json({blogs})
+    }catch(err){
+        console.log(err)
+        res.status(490).json({
+            ERROR: "GET-ERROR"
+        })
+    }
 }
 
 // add new blog
-const addNewBlog = (req,res) => {
-    res.status(200).json({
-        message: "POST new blog",
-        user: req.user
-    })
+const addNewBlog = async (req,res) => {
+    const {body} = req.body 
+    try {
+        const blog = await Blog.create({author: req.user.username,body})
+        res.status(200).json({blog})
+    }catch(err){
+        console.log(err)
+        res.status(490).json({
+            ERROR: "POST-ERROR",
+        })
+    }
 }
 
 // get single blog
@@ -35,11 +47,19 @@ const updateSingleBlog = (req,res) => {
 }
 
 // delete a single blog
-const deleteSingleBlog = (req,res) => {
-    res.status(200).json({
-        message: "DELETE a single blog",
-        user: req.user
-    })
+const deleteSingleBlog = async (req,res) => {
+    const {_id} = req.params 
+    try {
+        const blog = await Blog.findOneAndDelete({_id})
+        res.status(200).json({
+            message: "DELETED"
+        })
+    }catch(err){
+        console.log(err)
+        res.status(490).json({
+            ERROR: "DELETE-ERROR"
+        })
+    }
 }
 
 

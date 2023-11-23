@@ -4,6 +4,7 @@ import {Routes,Route} from 'react-router-dom'
 // context providers
 import AuthContextProvider from './contexts/AuthContext'
 import ProfileContextProvider from './contexts/ProfileContext'
+import BlogsContextProvider from './contexts/BlogsContext'
 
 // private routes
 import PrivateRoutes from './utils/PrivateRoutes'
@@ -25,15 +26,17 @@ const App = () => {
         <div className="container">
             <AuthContextProvider>
                 <ProfileContextProvider>
-                    <Header />
-                    <Routes>
-                        <Route element={<PrivateRoutes />}>
-                            <Route index element={<Home />} />
-                            <Route path='blogs' element={<Blogs />} />
-                        </Route>
-                        <Route path='login' element={<Login />} />
-                        <Route path='signup' element={<Signup />} />
-                    </Routes>
+                    <BlogsContextProvider>
+                        <Header />
+                        <Routes>
+                            <Route element={<PrivateRoutes />}>
+                                <Route index element={<Home />} />
+                                <Route path='blogs' element={<Blogs />} />
+                            </Route>
+                            <Route path='login' element={<Login />} />
+                            <Route path='signup' element={<Signup />} />
+                        </Routes>
+                    </BlogsContextProvider>
                 </ProfileContextProvider>
             </AuthContextProvider>
         </div>
