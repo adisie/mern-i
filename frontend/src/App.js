@@ -1,9 +1,21 @@
 
 
+// contexts
+import ProfilesContextProvider from "./contexts/ProfilesContext"
+
+// pages
+import Profiles from "./pages/Profiles"
+
+
+// css
+import './App.css'
+
 const App = () => {
     return ( 
         <div className="container">
-            <h1>App</h1>
+            <ProfilesContextProvider>
+                <Profiles />
+            </ProfilesContextProvider>
         </div>
      );
 }
