@@ -81,7 +81,63 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(2px);
-  display: none;
+}
+.header-main-container .header .login-nav .user-profile-conroller .close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.7em;
+  color: rgb(27, 104, 27);
+  position: absolute;
+  top: 7%;
+  right: 7%;
+}
+.header-main-container .header .login-nav .user-profile-conroller .action-container {
+  width: 75%;
+  height: 75%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgb(27, 104, 27);
+  border-radius: 7px;
+}
+.header-main-container .header .login-nav .user-profile-conroller .action-container .profiles {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.header-main-container .header .login-nav .user-profile-conroller .action-container .profiles:hover .delete-btn {
+  opacity: 0.75;
+}
+.header-main-container .header .login-nav .user-profile-conroller .action-container .profiles .delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  position: absolute;
+  top: 0.13em;
+  right: 0.13em;
+  opacity: 0;
+  transition: 1s;
+  cursor: pointer;
+}
+.header-main-container .header .login-nav .user-profile-conroller .action-container .profiles .pick-image-label {
+  color: rgb(27, 104, 27);
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.header-main-container .header .login-nav .user-profile-conroller .action-container .profiles img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 }
 .header-main-container .header .login-nav ul {
   display: flex;

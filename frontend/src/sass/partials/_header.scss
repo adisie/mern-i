@@ -70,7 +70,71 @@
                 align-items: center;
                 justify-content: center;
                 backdrop-filter: blur(2px);
-                display: none;
+
+                .close-btn {
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1.7em;
+                    color: $primary-color;
+                    position: absolute;
+                    top: 7%;
+                    right: 7%;
+                }
+
+                .action-container {
+                    width: 75%;
+                    height: 75%;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    background: $primary-color;
+                    border-radius: 7px;
+
+                    .profiles {
+                        margin: 0 auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        position: relative;
+
+                        &:hover {
+                            .delete-btn {
+                                opacity: .75;
+                            }
+                        }
+                        .delete-btn {
+                            background: transparent;
+                            border: none;
+                            font-size: 1.5em;
+                            position: absolute;
+                            top: .13em;
+                            right: .13em;
+                            opacity: 0;
+                            transition: 1s;
+                            cursor: pointer;
+                        }
+
+                        .pick-image-label {
+                            color: $primary-color;
+                            font-size: 1.5em;
+                            cursor: pointer;
+                            position: absolute;
+                            bottom: 1px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 5px;
+                        }
+                    }
+                }
             }
 
             ul {

@@ -20,7 +20,7 @@ const app = express()
 // settings and middlewares
 app.use(express.json())
 app.use(cookieParser())
-app.use(express.static('public'))
+app.use('/public',express.static('public'))
 app.use(cors({
     origin: true,
     credentials: true

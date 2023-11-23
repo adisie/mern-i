@@ -9,10 +9,13 @@ import defaultUserProfileImage from '../../assets/images/male-profile-2.jpg'
 // contexts
 import { AuthContext } from "../../contexts/AuthContext"
 
+import UserProfileHandler from "./UserProfileHandler"
+
 const LoggedInHeader = () => {
     const {user,setAuhorizedUser} = useContext(AuthContext)
 
     const [isHide,setIsHide] = useState(true)
+    const [userProfile,setUserProfile] = useState(false)
 
     // logout user
     const logoutUser = async () => {
@@ -43,13 +46,7 @@ const LoggedInHeader = () => {
     }
 
     const userProfileViwer = () => {
-        const profileViewer = document.querySelector('.user-profile-conroller')
-        profileViewer.style.display = "flex"
-    }
-
-    const closeUserProfileViewr = () => {
-        const profileViewer = document.querySelector('.user-profile-conroller')
-        profileViewer.style.display = "none"
+        setUserProfile(!userProfile)
     }
 
     return ( 
@@ -76,11 +73,13 @@ const LoggedInHeader = () => {
                 <FaArrowAltCircleRight />
             }
             </button>
-            <div className="user-profile-conroller">
-                <div className="action-container">
-                    <button onClick={closeUserProfileViewr}>close me</button>
-                </div>
-            </div>
+            {
+                userProfile 
+                ?
+                <UserProfileHandler setUserProfile={setUserProfile}/>
+                :
+                <></>
+            }
         </nav>
      );
 }

@@ -2,21 +2,36 @@
 const Profile = require('../models/profilesModel')
 
 // get all profiles
-const getAllProfiles = (req,res) => {
-    res.status(200).json({
-        message: 'GET all profiles',
-    })
+const getAllProfiles = async (req,res) => {
+    try {
+        const profiles = await Profile.find({user: req.user.username}).sort({createdAt: -1})
+        res.status(200).json({
+            user: req.user,
+            profiles
+        })
+    }catch(err){
+        console.log(errr)
+        res.status(490).json({
+            message: 'Something wrong'
+        })
+    }
 }
 
 
 // add new profile
-const addNewProfile = (req,res) => {
-    // get data 
-    const {user} = req.body 
-    const {profile} = req.file 
-    res.status(200).json({
-        message: "Here we go"
-    })
+const addNewProfile = async (req,res) => {
+    try{
+        const profile = await Profile.create({user: req.user.username,profile: req.file.path})
+        res.status(200).json({
+            user: req.user,
+            profile
+        })
+
+    }catch(err){
+        res.status(490).json({
+            message: "SOMETHING WRONG"
+        })
+    }
 }
 
 // get single profile 
