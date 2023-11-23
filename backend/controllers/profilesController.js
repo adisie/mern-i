@@ -1,4 +1,5 @@
 
+const fs = require('fs')
 const Profile = require('../models/profilesModel')
 
 // get all profiles
@@ -49,10 +50,29 @@ const updateSingleProfile = (req,res) => {
 }
 
 // delete a single profile
-const deleteSingleProfile = (req,res) => {
-    res.status(200).json({
-        message: "DELETE a single profile"
-    })
+const deleteSingleProfile = async (req,res) => {
+    const {_id} = req.params 
+    try{
+        const profile = await Profile.findOneAndDelete({_id})
+        const path = profile.profile 
+        if(fs.existsSync(path)){
+            fs.unlink(path,err=>{
+                if(err){
+                    console.log(err)
+                }
+                return res.status(200).json({
+                    message: "DELETED",
+                    profile
+                })
+            })
+        }
+        
+    }catch(err){
+        console.log(err)
+        res.status(490).json({
+            ERROR: "SOMETHING-WRONG"
+        })
+    }
 }
 
 module.exports = {

@@ -1,31 +1,22 @@
 
-import React,{useEffect, useState} from 'react'
-import axios from 'axios'
+import React,{useContext} from 'react'
 import { FaWindowClose } from "react-icons/fa"
 
 import defaultUserProfileImage from '../../assets/images/male-profile-2.jpg'
 import { FaCamera } from "react-icons/fa"
 
+import { ProfileContext } from '../../contexts/ProfileContext'
+
 import ProfileViewer from './ProfileViewer'
 
 const UserProfileHandler = ({setUserProfile}) => {
-    const [profiles,setProfiles] = useState([])
-    // effects
-    useEffect(()=>{
-        getAppProfiles()
-    },[])
+    const {profiles,addNewProfile} = useContext(ProfileContext)
 
 
-    // functions 
-    // get all profiles 
-    const getAppProfiles = async () => {
-        try{
-            const response = await axios.get('/users/profiles',{withCredentials: true})
-            console.log(response.data.profiles)
-            setProfiles([...profiles,...response.data.profiles])
-        }catch(err){
-            console.log(err)
-        }
+    const inputChangeHandler = e => {
+        const formData = new FormData()
+        formData.append('profile',e.target.files[0])
+        addNewProfile(formData)
     }
   return (
     <div className="user-profile-conroller">
@@ -40,7 +31,7 @@ const UserProfileHandler = ({setUserProfile}) => {
                 }
                 
                 
-                <input type="file" name='profile' id='profile' hidden accept='image/*'/>
+                <input type="file" name='profile' id='profile' hidden accept='image/*' onChange={inputChangeHandler}/>
                 <label htmlFor="profile" className='pick-image-label'><FaCamera /></label>
             </div>
         </div>

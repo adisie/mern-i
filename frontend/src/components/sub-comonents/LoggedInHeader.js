@@ -8,12 +8,14 @@ import defaultUserProfileImage from '../../assets/images/male-profile-2.jpg'
 
 // contexts
 import { AuthContext } from "../../contexts/AuthContext"
+import { ProfileContext } from "../../contexts/ProfileContext"
 
 import UserProfileHandler from "./UserProfileHandler"
 
 const LoggedInHeader = () => {
     const {user,setAuhorizedUser} = useContext(AuthContext)
-
+    const {profiles} = useContext(ProfileContext)
+    const path = profiles.length ?  `http://localhost:3080/${profiles[0].profile}` : defaultUserProfileImage
     const [isHide,setIsHide] = useState(true)
     const [userProfile,setUserProfile] = useState(false)
 
@@ -62,7 +64,7 @@ const LoggedInHeader = () => {
             <div className="user-controller">
                 <button onClick={logoutUser}>Logout</button>
                 <span>{user.username}</span>
-                <img src={defaultUserProfileImage} alt="user profile image" onClick={userProfileViwer}/>
+                <img src={path} alt="user profile image" onClick={userProfileViwer}/>
             </div>
             <button className="show-nav-btn" onClick={showHideNavBar}>
             {
