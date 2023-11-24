@@ -1,6 +1,6 @@
 
 
-import React from 'react'
+import React,{useContext} from 'react'
 
 // icons
 import { BsHandThumbsUpFill } from "react-icons/bs"
@@ -11,13 +11,15 @@ import { MdDelete } from "react-icons/md"
 // default profile pictures
 import defaultAuthorProfile from '../assets/images/default-profiles/male-profile-2.jpg'
 
+// contexts 
+import { AuthContext } from '../contexts/AuthContext'
 
 // pages 
 import LoginSignup from './LoginSignup'
 import UserProfile from './UserProfile'
 
 const Home = () => {
-  const user = true
+  const {user} = useContext(AuthContext)
   return (
     <div className='sub-con home-con'>
         <div className="home-container">

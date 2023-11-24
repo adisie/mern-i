@@ -92,7 +92,7 @@ header .header-con .logged-out-nav button:hover {
 .home-con .home-container .posts-container .post {
   display: flex;
   flex-direction: column;
-  margin: 0.35em 0.5em;
+  margin: 0.75em 0.5em;
 }
 .home-con .home-container .posts-container .post .content {
   margin-left: 1.5em;
@@ -209,8 +209,8 @@ header .header-con .logged-out-nav button:hover {
   border: 2px solid rgba(27, 48, 31, 0.25);
   border-radius: 5px;
   font-family: "Times New Roman", Times, serif;
-  font-size: 1.15em;
-  padding: 0.15em 1.5em;
+  font-size: 0.95em;
+  padding: 0.25em 1.5em;
 }
 .home-con .login-signup-form-container .form-container form .input-control input:focus {
   border-color: rgba(27, 48, 31, 0.75);
@@ -287,13 +287,13 @@ header .header-con .logged-out-nav button:hover {
 }
 .home-con .user-profile-container .image-container img {
   max-width: 250px;
-  max-height: 300px;
+  max-height: 200px;
   border-radius: 5px;
 }
 .home-con .user-profile-container .image-container .username-span {
   color: rgb(213, 213, 247);
   font-family: "Times New Roman", Times, serif;
-  font-size: 1.15em;
+  font-size: 0.85em;
   font-style: italic;
   margin: 0.3em;
 }

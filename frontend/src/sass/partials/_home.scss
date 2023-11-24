@@ -36,7 +36,7 @@
             .post {
                 display: flex;
                 flex-direction: column;
-                margin: .35em .5em;
+                margin: .75em .5em;
 
                 .content {
                     margin-left: 1.5em;
@@ -171,8 +171,8 @@
                     border: 2px solid rgba($primary-bg-color,.25);
                     border-radius: 5px;
                     font-family: 'Times New Roman', Times, serif;
-                    font-size: 1.15em;
-                    padding: .15em 1.5em;
+                    font-size: .95em;
+                    padding: .25em 1.5em;
 
                     &:focus {
                         border-color: rgba($primary-bg-color,.75);
@@ -264,14 +264,14 @@
 
             img {
                 max-width: 250px;
-                max-height: 300px;
+                max-height: 200px;
                 border-radius: 5px;
             }
 
             .username-span {
                 color: $primary-tx-color;
                 font-family: 'Times New Roman', Times, serif;
-                font-size: 1.15em;
+                font-size: .85em;
                 font-style: italic;
                 margin: .3em;
             }
