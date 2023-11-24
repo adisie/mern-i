@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 42px 1fr;
+}
+.container .sub-con {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0.5em;
+}
+
+header {
+  width: 100%;
+  height: 100%;
+  background: rgb(27, 48, 31);
+}
+header .header-con {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .header-con .site-logo {
+  font-size: 1.35em;
+  font-family: cursive;
+  font-style: italic;
+  font-weight: bolder;
+  color: rgb(213, 213, 247);
+}
+header .header-con .logged-out-nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .header-con .logged-out-nav button {
+  background: transparent;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.95em;
+  border: 2px solid rgb(213, 213, 247);
+  color: rgb(213, 213, 247);
+  padding: 0.13em 1.3em;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 0.45em;
+  transition: 0.5s;
+}
+header .header-con .logged-out-nav button:hover {
+  background: rgba(213, 213, 247, 0.3);
+}
+
+.home-con {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+.home-con .home-container {
+  flex-grow: 3;
+  height: 100%;
+  width: 100%;
+  padding: 0.35em;
+}
+.home-con .home-container .posts-container {
+  width: 100%;
+  height: 100%;
+  max-width: 920px;
+  overflow: auto;
+}
+.home-con .home-container .posts-container::-webkit-scrollbar {
+  width: 3px;
+}
+.home-con .home-container .posts-container:hover::-webkit-scrollbar-track {
+  background: whitesmoke;
+  border-radius: 3px;
+}
+.home-con .home-container .posts-container:hover::-webkit-scrollbar-thumb {
+  background: rgb(213, 213, 247);
+  border-radius: 3px;
+}
+.home-con .home-container .posts-container .post {
+  display: flex;
+  flex-direction: column;
+  margin: 0.35em 0.05em;
+}
+.home-con .home-container .posts-container .post .content {
+  margin-left: 1.5em;
+  position: relative;
+  background: rgb(213, 213, 247);
+  padding: 0.5em;
+  border-radius: 5px;
+}
+.home-con .home-container .posts-container .post .content p {
+  text-align: justify;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+.home-con .home-container .posts-container .post .content:hover .controllers {
+  opacity: 1;
+}
+.home-con .home-container .posts-container .post .content .controllers {
+  position: absolute;
+  top: 0.025em;
+  right: 0.05em;
+  opacity: 0;
+  transition: 0.5s;
+}
+.home-con .home-container .posts-container .post .content .controllers .post-controll-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  margin: 0 0.3em;
+  cursor: pointer;
+  color: rgb(27, 48, 31);
+}
+.home-con .home-container .posts-container .post .author-detail-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-con .home-container .posts-container .post .author-detail-container .author-img-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.home-con .home-container .posts-container .post .author-detail-container .author-img-name img {
+  width: 38px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.home-con .home-container .posts-container .post .author-detail-container .author-img-name span {
+  font-size: small;
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(27, 48, 31);
+  margin-left: 0.13em;
+}
+.home-con .home-container .posts-container .post .author-detail-container .post-reaction-controllers {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.home-con .home-container .posts-container .post .author-detail-container .post-reaction-controllers .post-reaction-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25em;
+  color: rgb(27, 48, 31);
+  margin-right: 0.3em;
+}
+.home-con .home-container .posts-container .post .author-detail-container .post-reaction-controllers span {
+  font-size: small;
+  font-style: italic;
+  color: rgb(27, 48, 31);
+}
+.home-con .login-signup-form-container {
+  flex-basis: 480px;
+  background: red;
+}

@@ -1,0 +1,134 @@
+
+
+.home-con {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+
+    // post container
+    .home-container {
+        flex-grow: 3;
+        height: 100%;
+        width: 100%;
+        padding: .35em;
+
+        .posts-container {
+            width: 100%;
+            height: 100%;
+            max-width: 920px;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                width: 3px;
+            }
+
+            &:hover::-webkit-scrollbar-track{
+                background: whitesmoke;
+                border-radius: 3px;
+            }
+
+            &:hover::-webkit-scrollbar-thumb{
+                background: $primry-tx-color;
+                border-radius: 3px;
+            }
+
+            .post {
+                display: flex;
+                flex-direction: column;
+                margin: .35em .05em;
+
+                .content {
+                    margin-left: 1.5em;
+                    position: relative;
+                    background: $primry-tx-color;
+                    padding: .5em;
+                    border-radius: 5px;
+
+                    p {
+                        text-align: justify;
+                        font-family: 'Times New Roman', Times, serif;
+                        font-style: italic;
+                    }
+                    // edit and delete button controllers
+
+                    &:hover .controllers {
+                        opacity: 1;
+                    }
+
+                    .controllers {
+                        position: absolute;
+                        top: .025em;
+                        right: .05em;
+                        opacity: 0;
+                        transition: .5s;
+
+                        .post-controll-btn {
+                            background: transparent;
+                            border: none;
+                            font-size: 1.5em;
+                            margin: 0 .3em;
+                            cursor: pointer;
+                            color: $primary-bg-color;
+                        }
+                    }
+                }
+
+                .author-detail-container {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .author-img-name {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        img {
+                            width: 38px;
+                            height: 32px;
+                            border-radius: 50%;
+                            cursor: pointer;
+                        }
+                        span {
+                            font-size: small;
+                            font-style: italic;
+                            font-weight: bold;
+                            color: $primary-bg-color;
+                            margin-left: .13em;
+                        }
+                    }
+
+                    .post-reaction-controllers {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+
+                        .post-reaction-btn {
+                            background: transparent;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 1.25em;
+                            color: $primary-bg-color;
+                            margin-right: .3em;
+                        }
+
+                        span {
+                            font-size: small;
+                            font-style: italic;
+                            color: $primary-bg-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // login and signup form container
+    .login-signup-form-container {
+        flex-basis: 480px;
+        background: red;
+    }
+}
