@@ -92,7 +92,7 @@ header .header-con .logged-out-nav button:hover {
 .home-con .home-container .posts-container .post {
   display: flex;
   flex-direction: column;
-  margin: 0.35em 0.05em;
+  margin: 0.35em 0.5em;
 }
 .home-con .home-container .posts-container .post .content {
   margin-left: 1.5em;
@@ -169,5 +169,147 @@ header .header-con .logged-out-nav button:hover {
 }
 .home-con .login-signup-form-container {
   flex-basis: 480px;
-  background: red;
+  border-left: 5px solid rgb(27, 48, 31);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.home-con .login-signup-form-container .form-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 0.75em 0;
+}
+.home-con .login-signup-form-container .form-container form {
+  width: 95%;
+  margin: 0 auto;
+  background: rgb(213, 213, 247);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.home-con .login-signup-form-container .form-container form h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  text-align: center;
+  margin: 12px 0;
+}
+.home-con .login-signup-form-container .form-container form .input-control {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: 5px auto;
+}
+.home-con .login-signup-form-container .form-container form .input-control input {
+  background: transparent;
+  outline: none;
+  border: 2px solid rgba(27, 48, 31, 0.25);
+  border-radius: 5px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.15em;
+  padding: 0.15em 1.5em;
+}
+.home-con .login-signup-form-container .form-container form .input-control input:focus {
+  border-color: rgba(27, 48, 31, 0.75);
+}
+.home-con .login-signup-form-container .form-container form .input-control .error {
+  font-size: small;
+  font-weight: bold;
+  font-style: italic;
+  color: rgb(133, 3, 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-con .login-signup-form-container .form-container form .input-control button {
+  align-self: center;
+  background: rgb(27, 48, 31);
+  color: rgb(213, 213, 247);
+  padding: 0.15em 1.3em;
+  border-radius: 3px;
+  font-size: 1.03em;
+  font-family: "Times New Roman", Times, serif;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 0.75em;
+}
+.home-con .user-profile-container {
+  padding: 0 0.7em;
+  background: rgba(213, 213, 247, 0.65);
+}
+.home-con .user-profile-container .image-container {
+  width: 100%;
+  margin: 0.25em auto;
+  padding: 0.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(27, 48, 31);
+  border-radius: 5px 5px 0 0;
+  position: relative;
+}
+.home-con .user-profile-container .image-container:hover .profile-delete-btn {
+  opacity: 0.975;
+}
+.home-con .user-profile-container .image-container .profile-delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: rgb(27, 48, 31);
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  opacity: 0;
+  transition: 1s;
+}
+.home-con .user-profile-container .image-container .controllers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-con .user-profile-container .image-container .controllers button {
+  background: transparent;
+  border: none;
+  color: rgb(213, 213, 247);
+  cursor: pointer;
+  font-size: 1.3em;
+}
+.home-con .user-profile-container .image-container .controllers label {
+  color: rgb(213, 213, 247);
+  font-size: 1.5em;
+  cursor: pointer;
+  margin: 0 0.35em;
+}
+.home-con .user-profile-container .image-container img {
+  max-width: 250px;
+  max-height: 300px;
+  border-radius: 5px;
+}
+.home-con .user-profile-container .image-container .username-span {
+  color: rgb(213, 213, 247);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.15em;
+  font-style: italic;
+  margin: 0.3em;
+}
+.home-con .user-profile-container .image-container .logout-btn {
+  background: transparent;
+  padding: 0.13em 1.5em;
+  color: rgb(213, 213, 247);
+  border: 2px solid rgb(213, 213, 247);
+  border-radius: 3px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.15em;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: 1s;
+  margin-bottom: 12px;
+}
+.home-con .user-profile-container .image-container .logout-btn:hover {
+  background: rgba(213, 213, 247, 0.45);
 }
