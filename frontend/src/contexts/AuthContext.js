@@ -9,7 +9,6 @@ const AuthContextProvider = (props) => {
     // states
     const [toLogin,setToLogin] = useState(true)
     const [user,setUser] = useState(null)
-
     // effects
     useEffect(()=>{
         authChecker()
@@ -45,6 +44,7 @@ const AuthContextProvider = (props) => {
             console.log(err)
         }
     }
+
     
     return ( 
         <AuthContext.Provider value={{

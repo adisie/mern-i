@@ -286,8 +286,8 @@ header .header-con .logged-out-nav button:hover {
   margin: 0 0.35em;
 }
 .home-con .user-profile-container .image-container img {
-  max-width: 250px;
-  max-height: 200px;
+  width: 250px;
+  height: 200px;
   border-radius: 5px;
 }
 .home-con .user-profile-container .image-container .username-span {

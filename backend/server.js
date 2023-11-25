@@ -7,6 +7,10 @@ const cors = require('cors')
 // routes
 const usersRoute = require('./routes/usersRoute')
 const authCheckerRoute = require('./routes/authCheckerRoute')
+const usersProfilesRoute = require('./routes/usersProfilesRoute')
+
+// middlewares
+const authCheckerMiddleware = require('./middlewares/authCheckerMiddleware')
 
 
 const app = express()
@@ -18,7 +22,7 @@ app.use(cors({
     origin: true,
     credentials: true,
 }))
-
+app.use('/public',express.static('public'))
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{
     console.log('CONNECTED')
@@ -33,3 +37,4 @@ mongoose.connect(process.env.MONGODB_URI)
 // setting routes
 app.use('/users',usersRoute)
 app.use('/users',authCheckerRoute)
+app.use('/users',authCheckerMiddleware,usersProfilesRoute)
