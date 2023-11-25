@@ -8,6 +8,7 @@ const cors = require('cors')
 const usersRoute = require('./routes/usersRoute')
 const authCheckerRoute = require('./routes/authCheckerRoute')
 const usersProfilesRoute = require('./routes/usersProfilesRoute')
+const blogsRoute = require('./routes/blogsRoute')
 
 // middlewares
 const authCheckerMiddleware = require('./middlewares/authCheckerMiddleware')
@@ -38,3 +39,4 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/users',usersRoute)
 app.use('/users',authCheckerRoute)
 app.use('/users',authCheckerMiddleware,usersProfilesRoute)
+app.use('/blogs',blogsRoute)
