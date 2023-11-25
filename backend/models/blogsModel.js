@@ -7,10 +7,6 @@ const blogsSchema = new Schema({
         type: String,
         required: true,
     },
-    profile: {
-        type: String,
-        required: false,
-    },
     body: {
         type: String,
         required: true,

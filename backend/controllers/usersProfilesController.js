@@ -6,7 +6,7 @@ const Profile = require('../models/usersProfilesModel')
 // get all profiles
 const getAllUsersProfiles = async (req,res) => {
     try{
-        const profiles = await Profile.find({user: req.user.username}).sort({createdAt: -1})
+        const profiles = await Profile.find({author: req.user.username}).sort({createdAt: -1})
         res.status(200).json({
             profiles
         })
@@ -22,7 +22,7 @@ const getAllUsersProfiles = async (req,res) => {
 const addNewUsersProfiles = async (req,res) => {
     try {
         const profile = await Profile.create({
-            user: req.user.username,
+            author: req.user.username,
             profile: req.file.path
         })
         res.status(200).json({

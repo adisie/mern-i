@@ -1,12 +1,46 @@
 
 // models
 const Blog = require('../models/blogsModel')
-const Profile = require('../models/usersProfilesModel')
 
 // get all blogs 
 const getAllBlogs = async (req,res) => {
     try{
-        const blogs = await Blog.find().sort({createdAt: -1})
+        const blogs = await Blog.aggregate([
+            {
+                $lookup: {
+                    from: 'profiles',
+                    localField: 'author',
+                    foreignField: 'author',
+                    as: 'profile',
+                }
+            }, 
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: 'author',
+                    foreignField: 'username',
+                    as: 'author'
+                }
+            },
+            {
+                $project: {
+                    body: 1,
+                    createdAt: 1,
+                    author: {
+                        $arrayElemAt: ["$author.username",0]
+                    },
+                    profile: {
+                        $arrayElemAt: ["$profile.profile",-1]
+                    }
+                }
+            },
+            {
+                $sort: {
+                    createdAt: -1
+                }
+            }
+
+        ])
         res.status(200).json({blogs})
     }catch(err){
         console.log(err)
@@ -20,11 +54,8 @@ const getAllBlogs = async (req,res) => {
 const addNewBlog = async (req,res) => {
     try{
         const {body} = req.body 
-        const profile = await Profile.find({user: req.user.username}).sort({createdAt: -1})
-        const profile_path = profile[0].profile ? profile[0].profile :  '' 
         const blog = await Blog.create({
             author: req.user.username,
-            profile: profile_path,
             body
         }) 
 

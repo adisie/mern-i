@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const usersProfilesSchema = new Schema ({
-    user: {
+    author: {
         type: String,
         required: true,
     },
