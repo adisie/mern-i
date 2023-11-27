@@ -3,6 +3,7 @@ import {Routes,Route} from 'react-router-dom'
 // context providers
 import AuthContextProvider from './contexts/AuthContext'
 import UserProfileContextProvider from './contexts/UserProfileContext'
+import BlogsContextProvider from './contexts/BlogsContext'
 
 // components
 import Header from "./components/Header"
@@ -18,10 +19,12 @@ const App = () => {
         <div className="container">
             <AuthContextProvider>
                 <UserProfileContextProvider>
-                    <Header />
-                    <Routes>
-                        <Route index element={<Home />} />
-                    </Routes>
+                    <BlogsContextProvider>
+                        <Header />
+                        <Routes>
+                            <Route index element={<Home />} />
+                        </Routes>
+                    </BlogsContextProvider>
                 </UserProfileContextProvider>
             </AuthContextProvider>
         </div>

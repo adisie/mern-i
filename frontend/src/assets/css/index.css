@@ -313,3 +313,40 @@ header .header-con .logged-out-nav button:hover {
 .home-con .user-profile-container .image-container .logout-btn:hover {
   background: rgba(213, 213, 247, 0.45);
 }
+.home-con .user-profile-container .add-new-post-form-container {
+  background: red;
+  position: relative;
+  display: flex;
+}
+.home-con .user-profile-container .add-new-post-form-container form {
+  position: fixed;
+  bottom: 5px;
+  display: flex;
+}
+.home-con .user-profile-container .add-new-post-form-container form textarea {
+  background: rgb(213, 213, 247);
+  height: 28px;
+  outline: none;
+  border: 2px solid rgba(27, 48, 31, 0.25);
+  width: 220px;
+  resize: none;
+  border-radius: 5px;
+  padding: 0.25em 0.5em;
+  font-size: 0.85em;
+  font-family: "Times New Roman", Times, serif;
+}
+.home-con .user-profile-container .add-new-post-form-container form textarea:focus {
+  border-color: rgba(27, 48, 31, 0.65);
+}
+.home-con .user-profile-container .add-new-post-form-container form textarea::-webkit-scrollbar {
+  width: 0;
+}
+.home-con .user-profile-container .add-new-post-form-container form button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.7em;
+  color: rgba(27, 48, 31, 0.5);
+  margin: 0 0.13em;
+  align-self: flex-end;
+}

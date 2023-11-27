@@ -13,7 +13,7 @@ const UserProfileContextProvider = (props) => {
     // effects 
     useEffect(()=>{
         getAllUserProfiles();
-    },[])
+    })
 
 
     // functoions

@@ -294,5 +294,48 @@
                 }
             }
         }
+
+        .add-new-post-form-container {
+            background: red;
+            position: relative;
+            display: flex;
+
+            form {
+                position: fixed;
+                bottom: 5px;
+                display: flex;
+
+                textarea {
+                    background: $primary-tx-color;
+                    height: 28px;
+                    outline: none;
+                    border: 2px solid rgba($primary-bg-color,.25);
+                    width: 220px;
+                    resize: none;
+                    border-radius: 5px;
+                    padding: .25em .5em;
+                    font-size: .85em;
+                    font-family: 'Times New Roman', Times, serif;
+
+                    &:focus {
+                        border-color: rgba($primary-bg-color,.65);
+                    }
+                    &::-webkit-scrollbar {
+                        width: 0;
+                    }
+                }
+
+                button {
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1.7em;
+                    color: rgba($primary-bg-color,.5);
+                    margin: 0 .13em;
+                    align-self: flex-end;
+                }
+                
+            }
+        }
     }
 }

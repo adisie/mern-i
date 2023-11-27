@@ -16,6 +16,9 @@ import { UserProfileContext } from '../contexts/UserProfileContext'
 // default profile image
 import defaultUserProfile from '../assets/images/default-profiles/male-profile-2.jpg'
 
+// pages 
+import NewBlogForm from './NewBlogForm'
+
 const UserProfile = () => {
   // states
   const [currentIndex,setCurrentIndex] = useState(0)
@@ -93,6 +96,7 @@ const UserProfile = () => {
           setProfiles([])
         }}>logout</button>
       </div>
+      <NewBlogForm />
     </div>
   )
 }
